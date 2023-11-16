@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ユーザー情報</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        form {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form action="save_user_info.php" method="post">
+        <h1>ユーザー情報</h1>
+        <label for="username">ユーザー名：</label>
+        <span id="username">サンプルユーザー名</span> <a href="#" id="editUsername">編集</a>
+        <input type="text" id="newUsername" name="newUsername" style="display: none;">
+        <br><br>
+        <label for="password">パスワード：</label>
+        <span id="password">サンプルパスワード</span> <a href="#" id="editPassword">編集</a>
+        <input type="password" id="newPassword" name="newPassword" style="display: none;">
+        <br><br>
+        <label for="email">メール：</label>
+        <span id="email">サンプルメールアドレス</span> <a href="#" id="editEmail">編集</a>
+        <input type="email" id="newEmail" name="newEmail" style="display: none;">
+        <br><br>
+        <input type="submit" value="保存">
+    </form>
+    <div id="userDetails" style="display: none;">
+        <h2>保存されたユーザー情報:</h2>
+        <p><strong>ユーザー名:</strong> <span id="savedUsername"></span></p>
+        <p><strong>パスワード:</strong> <span id="savedPassword"></span></p>
+        <p><strong>メール:</strong> <span id="savedEmail"></span></p>
+    </div>
+    <script>
+        // 編集リンクのクリックイベント
+        document.getElementById("editUsername").addEventListener("click", function() {
+            document.getElementById("username").style.display = "none";
+            document.getElementById("newUsername").style.display = "inline";
+        });
+
+        document.getElementById("editPassword").addEventListener("click", function() {
+            document.getElementById("password").style.display = "none";
+            document.getElementById("newPassword").style.display = "inline";
+        });
+
+        document.getElementById("editEmail").addEventListener("click", function() {
+            document.getElementById("email").style.display = "none";
+            document.getElementById("newEmail").style.display = "inline";
+        });
+
+        // 保存ボタンのクリックイベント
+        document.querySelector("form").addEventListener("submit", function(e) {
+            e.preventDefault(); // フォームの通常の送信を防止
+
+            // フォームの値を取得して表示
+            const savedUsername = document.getElementById("newUsername").value;
+            const savedPassword = document.getElementById("newPassword").value;
+            const savedEmail = document.getElementById("newEmail").value;
+
+            document.getElementById("savedUsername").textContent = savedUsername;
+            document.getElementById("savedPassword").textContent = savedPassword;
+            document.getElementById("savedEmail").textContent = savedEmail;
+
+            // ユーザー情報を表示
+            document.getElementById("userDetails").style.display = "block";
+
+            // 編集領域を非表示に
+            document.getElementById("newUsername").style.display = "none";
+            document.getElementById("newPassword").style.display = "none";
+            document.getElementById("newEmail").style.display = "none";
+
+            // 元の情報を更新
+            document.getElementById("username").textContent = savedUsername;
+            document.getElementById("password").textContent = "********"; // パスワードは隠す
+            document.getElementById("email").textContent = savedEmail;
+        });
+    </script>
+</body>
+</html>
