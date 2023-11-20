@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>商品一覧</title>
+	<link rel="stylesheet" th:href="@{/css/reset.css}">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+	<header>
+		<!--スマートフォン-->
+		<nav class="menu">
+			<div class="logo">
+				<a href="#"><img src="/images/logo.png" alt=""></a>
+			</div>
+			<div class="menu-contents">
+				<div class="menu-inner">
+					<ul>
+						<li class="menu__item"></li>
+						<li class="menu__item"><a href="">商品一覧</a></li>
+					</ul>
+				</div>
+				<div class="menu-toggle_btn">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+		</nav>
+		<!--pc-->
+		<nav class="pc">
+			<div class="pc-inner">
+				<div class="pc-logo">
+					<a href=""><img src="/images/logo.png" alt=""></a>
+				</div>
+				<ul class="pc-list">
+					<li class="pc-list__item"></li>
+					<li class="pc-list__item"><a href="">商品一覧</a></li>
+					<li class="pc-list__item"><a href="">ログアウト</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+    <main>
+        <div class="main-inner">
+            <section class="register-section">
+                <h2>商品登録画面</h2>
+                <form th:action="@{/product/register/process}" method="post" enctype="multipart/form-data">
+                    <div class="register-section-details">
+                        <div class="register-section-details_flex">
+                            <div>商品名</div>
+                            <input type="text" name="productName" value="">
+                        </div>
+                        <div class="register-section-details_flex">
+                            <div>カテゴリー</div>
+                            <select name="productCategory">
+                                <option value=""></option>
+                                <option value="シャープペン">シャープペン</option>
+                                <option value="消しゴム">消しゴム</option>
+                                <option value="鉛筆">鉛筆</option>
+                            </select>
+                        </div>
+                        <div class="register-section-details_flex">
+                            <div>商品画像</div>
+                            <input type="file" name="productImage">
+                        </div>
+                        <div class="register-section-details_flex">
+                            <div>商品の説明</div>
+                            <textarea name="productDescription" placeholder="商品の説明文"></textarea>
+                        </div>
+
+                    </div>
+                    <div class="register-section-details_flex">
+                        <button class="register">登録</button>
+                        <button class="back-btn" onclick="history.back();" type="button">戻る</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div>
+            <small>&copy; 2022 Izawa</small>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="./js/common.js"></script>
+</body>
+
+</html>
